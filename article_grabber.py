@@ -100,7 +100,7 @@ rec = session.get(url)
 if 'wiley' in url:
     sel = '#main-content > div.page-body.pagefulltext > div > section > div > div > div > div.main-content.col-md-8 > div.toc-wrapper > div.table-of-content > div > div > div > a > h2'
 elif 'sciencedirect' in url:
-    sel = '#article-0 > ol > li > dl > dt > h3 > a > span > span'
+    sel = '#article-list > form > div > div.u-margin-xs-top.u-margin-xs-bottom.col-md-18.move-right > ol > li > ol > li > dl > dt > h3 > a > span > span'
 # 根据不同页面相应修改
 
 results = rec.html.find(sel)
@@ -112,7 +112,7 @@ results = rec.html.find(sel)
 
 # print(get_titles(sel))
 titles = get_titles(sel)
-check = input('Translate?(Y or N)')
+check = input('Translate?(Y or N): ')
 while 1:
     if check == 'Y':
         translations = get_translations(titles)
@@ -122,7 +122,7 @@ while 1:
         df = pd.DataFrame(titles)
         break
     else:
-        print('Please enter Y or N')
+        print('Please enter Y or N!')
 
 # df
 
